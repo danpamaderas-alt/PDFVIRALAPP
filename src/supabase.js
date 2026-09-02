@@ -72,17 +72,107 @@ async function getEbook(id) {
     return null;
   }
 
-  const { data, error } = await client
-    .from(TABLE)
+  // Obtener ebook con todas sus relaciones
+  const { data: ebook, error: ebookError } = await client
+    .from('ebooks')
     .select('*')
     .eq('id', id)
     .single();
 
-  if (error) {
-    if (error.code === 'PGRST116') return null; // No encontrado
-    throw error;
+  if (ebookError) {
+    if (ebookError.code === 'PGRST116') return null;
+    throw ebookError;
   }
-  return data;
+
+  // Obtener lecciones
+  const { data: lessons } = await client
+    .from('lessons')
+    .select('*')
+    .eq('ebook_id', id)
+    .order('order_num');
+
+  // Obtener ejercicios para cada lección
+  const lessonsWithExercises = [];
+  for (const lesson of (lessons || [])) {
+    const { data: exercises } = await client
+      .from('exercises')
+      .select('*')
+      .eq('lesson_id', lesson.id)
+      .limit(1);
+    
+    lessonsWithExercises.push({
+      ...lesson,
+      exercise: exercises?.[0] || null
+    });
+  }
+
+  // Obtener checklist
+  const { data: checklist } = await client
+    .from('checklist_items')
+    .select('*')
+    .eq('ebook_id', id);
+
+  // Obtener mensaje de cierre
+  const { data: closing } = await client
+    .from('closing_messages')
+    .select('*')
+    .eq('ebook_id', id)
+    .limit(1);
+
+  // Transformar al formato que espera el generador
+  return {
+    ...ebook,
+    cover: {
+      title: ebook.title,
+      tagline: ebook.description,
+      color: ebook.theme?.primary_color || '#1a365d'
+    },
+    lessons: lessonsWithExercises.map(l => ({
+      title: l.title,
+      subtitle: l.subtitle,
+      icon: '📚',
+      sections: [
+        {
+          title: 'Objetivo',
+          content: l.objective,
+          highlight: true
+        },
+        {
+          title: 'Conceptos Clave',
+          content: '',
+          bullets: (l.concepts || []).map(c => `<strong>${c.title}:</strong> ${c.text}`)
+        },
+        {
+          title: 'Plan de Implementacion',
+          content: '',
+          bullets: (l.implementation || []).map(i => `<strong>Paso ${i.step}: ${i.title}</strong> - ${i.text}`)
+        }
+      ]
+    })),
+    exercises: lessonsWithExercises
+      .filter(l => l.exercise)
+      .map(l => ({
+        question: l.exercise.title,
+        hint: l.exercise.description,
+        options: (l.exercise.examples || []).map(e => `<strong>${e.type}:</strong> ${e.action}`)
+      })),
+    checklist: (checklist || []).map(c => ({
+      task: c.text,
+      done: false
+    })),
+    closing: closing?.[0] ? {
+      message: closing[0].message,
+      cta: closing[0].title,
+      links: (closing[0].next_steps || []).map(s => ({
+        label: s.title,
+        url: '#'
+      }))
+    } : {
+      message: 'Gracias por leer este ebook.',
+      cta: '¡Comienza tu viaje!',
+      links: []
+    }
+  };
 }
 
 /**
