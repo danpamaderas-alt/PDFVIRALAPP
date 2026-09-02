@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDFs Virales: De 0 a 1000 USD al Mes Vendiendo lo que Sabes</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* ─── Estilos del ebook (se insertan en cada página generada) ─── */
+    :root {
+      --primary: #1a1a2e;
+      --accent: #e94560;
+      --bg: #ffffff;
+      --text: #2d2d2d;
+      --light-bg: #f8f9fa;
+      --border: #e0e0e0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+    }
+
+    /* Portada */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--primary);
+      color: white;
+      padding: 2rem;
+    }
+
+    .cover h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .cover .tagline {
+      font-size: 1.3rem;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    .cover .author {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      margin-top: 1rem;
+    }
+
+    .cover-image {
+      max-width: 400px;
+      width: 80%;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    /* Contenido */
+    .content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* Lecciones */
+    .lesson {
+      margin-bottom: 3rem;
+      page-break-before: always;
+    }
+
+    .lesson-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .lesson-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.3;
+    }
+
+    .lesson-title {
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    .lesson-icon {
+      font-size: 2rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+
+    .section h3 {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .section p {
+      margin-bottom: 1rem;
+    }
+
+    .section ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Caja destacada */
+    .highlight-box {
+      background: var(--light-bg);
+      border-left: 4px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* Ejercicios */
+    .exercises-section {
+      margin: 3rem 0;
+      page-break-before: always;
+    }
+
+    .exercises-section h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .exercise {
+      background: var(--light-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--border);
+    }
+
+    .exercise h3 {
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .exercise-question {
+      font-weight: 600;
+    }
+
+    .exercise-options {
+      margin: 0.75rem 0 0.75rem 1.5rem;
+    }
+
+    .exercise-options li {
+      margin-bottom: 0.4rem;
+    }
+
+    .exercise-hint {
+      font-style: italic;
+      color: #666;
+      margin-top: 0.75rem;
+    }
+
+    /* Checklist */
+    .checklist-section {
+      margin: 3rem 0;
+      page-break-before: always;
+    }
+
+    .checklist-section h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--light-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: default;
+    }
+
+    .checklist-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--accent);
+    }
+
+    /* Cierre */
+    .closing {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), #16213e);
+      color: white;
+      padding: 3rem 2rem;
+      page-break-before: always;
+    }
+
+    .closing h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .closing p {
+      font-size: 1.15rem;
+      max-width: 600px;
+      opacity: 0.9;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0.5rem;
+      transition: transform 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .ebook-footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #999;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── Estilos para impresión / PDF ─── */
+    @media print {
+      body { background: white; }
+
+      .cover {
+        page-break-after: always;
+        min-height: 100vh;
+      }
+
+      .lesson {
+        page-break-before: always;
+      }
+
+      .exercises-section {
+        page-break-before: always;
+      }
+
+      .checklist-section {
+        page-break-before: always;
+      }
+
+      .closing {
+        page-break-before: always;
+      }
+
+      .cta-button {
+        display: none;
+      }
+    }
+
+    /* ─── Diseño responsive ─── */
+    @media (max-width: 768px) {
+      .cover h1 { font-size: 2rem; }
+      .cover .tagline { font-size: 1.1rem; }
+      .content { padding: 2rem 1.25rem; }
+      .lesson-title { font-size: 1.4rem; }
+      .lesson-number { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Portada -->
+  <!-- Plantilla parcial: Portada del ebook -->
+<div class="cover" style="background: #1a365d;">
+  <!-- Si no hay imagen -->
+  <div class="cover-visual">
+    <h1>PDFs Virales: De 0 a 1000 USD al Mes Vendiendo lo que Sabes</h1>
+  </div>
+  <!-- /Si no hay imagen -->
+  <p class="tagline">Guia completa para crear y vender ebooks profesionales. Aprende a generar ingresos de $1000 USD al mes con PDFs que la gente quiere comprar.</p>
+  <p class="author">por DanPam</p>
+</div>
+
+
+  <!-- Contenido principal -->
+  <div class="content">
+
+    <!-- Lecciones -->
+    <!-- Plantilla parcial: Lección -->
+<div class="lesson">
+  <div class="lesson-header">
+    <span class="lesson-number">01</span>
+    <span class="lesson-icon">📚</span>
+    <h2 class="lesson-title">La Mentalidad del Creador Digital</h2>
+  </div>
+  <div class="lesson-body">
+    <div class="highlight-box">
+        <div class="section">
+          <h3>Objetivo</h3>
+          <p>Entender que tu conocimiento tiene valor monetario y aprender a identificar que sabes que otros pagarian por saber.</p></div></div>
+        <div class="section">
+          <h3>Conceptos Clave</h3>
+          <p></p><ul><li><strong>El conocimiento tiene valor:</strong> Todo lo que sabes hacer tiene alguien que necesita aprenderlo.</li><li><strong>Mentalidad de creador vs consumidor:</strong> Deja de consumir contenido y empieza a crearlo.</li></ul></div>
+        <div class="section">
+          <h3>Plan de Implementacion</h3>
+          <p></p><ul><li><strong>Paso 1: Haz tu inventario</strong> - Escribe 20 cosas que sepas hacer.</li><li><strong>Paso 2: Identifica tu nicho</strong> - Selecciona los 3 que mejor sabes hacer.</li></ul></div>
+  </div>
+</div>
+<!-- Plantilla parcial: Lección -->
+<div class="lesson">
+  <div class="lesson-header">
+    <span class="lesson-number">02</span>
+    <span class="lesson-icon">📚</span>
+    <h2 class="lesson-title">Creacion de Ebooks que Venden</h2>
+  </div>
+  <div class="lesson-body">
+    <div class="highlight-box">
+        <div class="section">
+          <h3>Objetivo</h3>
+          <p>Crear un ebook con contenido valioso y estructura profesional.</p></div></div>
+        <div class="section">
+          <h3>Conceptos Clave</h3>
+          <p></p><ul><li><strong>Estructura ganadora:</strong> Un ebook profesional tiene: portada, intro, 5-7 capitulos.</li></ul></div>
+        <div class="section">
+          <h3>Plan de Implementacion</h3>
+          <p></p><ul><li><strong>Paso 1: Define tu estructura</strong> - Crea esqueleto con 5-7 capitulos.</li></ul></div>
+  </div>
+</div>
+<!-- Plantilla parcial: Lección -->
+<div class="lesson">
+  <div class="lesson-header">
+    <span class="lesson-number">03</span>
+    <span class="lesson-icon">📚</span>
+    <h2 class="lesson-title">Plataformas de Venta</h2>
+  </div>
+  <div class="lesson-body">
+    <div class="highlight-box">
+        <div class="section">
+          <h3>Objetivo</h3>
+          <p>Configurar al menos 2 plataformas de venta automatizadas.</p></div></div>
+        <div class="section">
+          <h3>Conceptos Clave</h3>
+          <p></p><ul><li><strong>Gumroad:</strong> Plataforma ideal para principiantes.</li><li><strong>Hotmart:</strong> Mayor presencia en Latinoamerica.</li></ul></div>
+        <div class="section">
+          <h3>Plan de Implementacion</h3>
+          <p></p><ul><li><strong>Paso 1: Crea tu cuenta en Gumroad</strong> - Registrate en gumroad.com.</li></ul></div>
+  </div>
+</div>
+<!-- Plantilla parcial: Lección -->
+<div class="lesson">
+  <div class="lesson-header">
+    <span class="lesson-number">04</span>
+    <span class="lesson-icon">📚</span>
+    <h2 class="lesson-title">Estrategias de Marketing Digital</h2>
+  </div>
+  <div class="lesson-body">
+    <div class="highlight-box">
+        <div class="section">
+          <h3>Objetivo</h3>
+          <p>Implementar 3 estrategias de marketing organico.</p></div></div>
+        <div class="section">
+          <h3>Conceptos Clave</h3>
+          <p></p><ul><li><strong>Contenido en redes:</strong> Instagram, TikTok y Twitter son gratuitos.</li></ul></div>
+        <div class="section">
+          <h3>Plan de Implementacion</h3>
+          <p></p><ul><li><strong>Paso 1: Crea contenido diario</strong> - Publica 1 post diario con tips.</li></ul></div>
+  </div>
+</div>
+<!-- Plantilla parcial: Lección -->
+<div class="lesson">
+  <div class="lesson-header">
+    <span class="lesson-number">05</span>
+    <span class="lesson-icon">📚</span>
+    <h2 class="lesson-title">Escalamiento y Automatizacion</h2>
+  </div>
+  <div class="lesson-body">
+    <div class="highlight-box">
+        <div class="section">
+          <h3>Objetivo</h3>
+          <p>Configurar sistemas automatizados para ingresos pasivos.</p></div></div>
+        <div class="section">
+          <h3>Conceptos Clave</h3>
+          <p></p><ul><li><strong>Embudo automatizado:</strong> Red social a Lead magnet a Email a Venta.</li></ul></div>
+        <div class="section">
+          <h3>Plan de Implementacion</h3>
+          <p></p><ul><li><strong>Paso 1: Mapea tu embudo</strong> - Dibuja el camino de tu cliente.</li></ul></div>
+  </div>
+</div>
+
+
+    <!-- Ejercicios -->
+    
+    <div class="exercises-section" id="exercises">
+      <h2>📝 Ejercicios Prácticos</h2>
+      <div class="exercise">
+        <h3>Ejercicio 1</h3>
+        <p class="exercise-question">Ejercicio: Tu Mapa de Conocimiento</p>
+        <ul class="exercise-options"><li><strong>Emprendedor Principiante:</strong> Hizo inventario y descubrio que podia vender Excel para oficinistas.</li></ul>
+        <p class="exercise-hint">💡 Pista: Identifica tu conocimiento monetizable</p>
+      </div>
+      <div class="exercise">
+        <h3>Ejercicio 2</h3>
+        <p class="exercise-question">Ejercicio: Tu Primer Ebook</p>
+        <ul class="exercise-options"><li><strong>Ebook Express:</strong> Creo ebook en 3 dias, 15 paginas, vendio 20 copias.</li></ul>
+        <p class="exercise-hint">💡 Pista: Crea un ebook con estructura ganadora</p>
+      </div>
+      <div class="exercise">
+        <h3>Ejercicio 3</h3>
+        <p class="exercise-question">Ejercicio: Configura tu Tienda</p>
+        <ul class="exercise-options"><li><strong>Setup Rapido:</strong> Creo cuenta en Gumroad, en 24 horas tuvo primeras ventas.</li></ul>
+        <p class="exercise-hint">💡 Pista: Lanza tu primera plataforma de venta</p>
+      </div>
+      <div class="exercise">
+        <h3>Ejercicio 4</h3>
+        <p class="exercise-question">Ejercicio: Tu Primera Semana de Marketing</p>
+        <ul class="exercise-options"><li><strong>Instagram Strategist:</strong> Creo 7 posts, resultado: 150 seguidores, 8 ventas.</li></ul>
+        <p class="exercise-hint">💡 Pista: Implementa estrategia de contenido de 7 dias</p>
+      </div>
+      <div class="exercise">
+        <h3>Ejercicio 5</h3>
+        <p class="exercise-question">Ejercicio: Plan de Escalamiento 90 Dias</p>
+        <ul class="exercise-options"><li><strong>Escalamiento Rapido:</strong> Plan 90 dias: lanzar 2 ebooks mas, configurar email marketing.</li></ul>
+        <p class="exercise-hint">💡 Pista: Crea tu roadmap para $1000 USD/mes</p>
+      </div></div>
+
+    <!-- Checklist -->
+    
+    <div class="checklist-section" id="checklist">
+      <h2>✅ Lista de Verificación</h2>
+      <div class="checklist">
+        <label class="checklist-item">
+          <input type="checkbox"  disabled>
+          <span>Tu ebook resuelve un problema especifico?</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox"  disabled>
+          <span>Incluye ejercicios practicos?</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox"  disabled>
+          <span>Tiene diseno profesional?</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox"  disabled>
+          <span>El precio es competitivo?</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox"  disabled>
+          <span>Esta en 2 plataformas de venta?</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox"  disabled>
+          <span>Tienes landing page de ventas?</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox"  disabled>
+          <span>Tienes estrategia de contenido 7 dias?</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox"  disabled>
+          <span>Tienes plan de escalamiento 90 dias?</span>
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Cierre -->
+  <!-- Plantilla parcial: Cierre del ebook -->
+<div class="closing">
+  <h2>¡Felicidades! 🎉</h2>
+  <p>Recuerda: no necesitas ser perfecto para empezar, necesitas empezar para ser perfecto.</p>
+  {{#if closing.cta}}
+  <p><strong>Tu viaje como creador digital comienza ahora!</strong></p>
+  {{/if}}
+  <div class="closing-links">
+    <a href="#" class="cta-button">Implementa lo aprendido hoy</a> <a href="#" class="cta-button">Crea tu primer ebook esta semana</a> 
+  </div>
+</div>
+
+
+  <!-- Pie de página -->
+  <footer class="ebook-footer">
+    <p>Generado el 2 de septiembre de 2026 con eBook Generator System</p>
+    <p>DanPam</p>
+  </footer>
+
+</body>
+</html>
