@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ebook.title}}</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* ─── Estilos del ebook (se insertan en cada página generada) ─── */
+    :root {
+      --primary: #1a1a2e;
+      --accent: #e94560;
+      --bg: #ffffff;
+      --text: #2d2d2d;
+      --light-bg: #f8f9fa;
+      --border: #e0e0e0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+    }
+
+    /* Portada */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--primary);
+      color: white;
+      padding: 2rem;
+    }
+
+    .cover h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .cover .tagline {
+      font-size: 1.3rem;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    .cover .author {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      margin-top: 1rem;
+    }
+
+    .cover-image {
+      max-width: 400px;
+      width: 80%;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    /* Contenido */
+    .content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* Lecciones */
+    .lesson {
+      margin-bottom: 3rem;
+      page-break-before: always;
+    }
+
+    .lesson-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .lesson-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.3;
+    }
+
+    .lesson-title {
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    .lesson-icon {
+      font-size: 2rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+
+    .section h3 {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .section p {
+      margin-bottom: 1rem;
+    }
+
+    .section ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Caja destacada */
+    .highlight-box {
+      background: var(--light-bg);
+      border-left: 4px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* Ejercicios */
+    .exercises-section {
+      margin: 3rem 0;
+      page-break-before: always;
+    }
+
+    .exercises-section h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .exercise {
+      background: var(--light-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--border);
+    }
+
+    .exercise h3 {
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .exercise-question {
+      font-weight: 600;
+    }
+
+    .exercise-options {
+      margin: 0.75rem 0 0.75rem 1.5rem;
+    }
+
+    .exercise-options li {
+      margin-bottom: 0.4rem;
+    }
+
+    .exercise-hint {
+      font-style: italic;
+      color: #666;
+      margin-top: 0.75rem;
+    }
+
+    /* Checklist */
+    .checklist-section {
+      margin: 3rem 0;
+      page-break-before: always;
+    }
+
+    .checklist-section h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--light-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: default;
+    }
+
+    .checklist-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--accent);
+    }
+
+    /* Cierre */
+    .closing {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), #16213e);
+      color: white;
+      padding: 3rem 2rem;
+      page-break-before: always;
+    }
+
+    .closing h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .closing p {
+      font-size: 1.15rem;
+      max-width: 600px;
+      opacity: 0.9;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0.5rem;
+      transition: transform 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .ebook-footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #999;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── Estilos para impresión / PDF ─── */
+    @media print {
+      body { background: white; }
+
+      .cover {
+        page-break-after: always;
+        min-height: 100vh;
+      }
+
+      .lesson {
+        page-break-before: always;
+      }
+
+      .exercises-section {
+        page-break-before: always;
+      }
+
+      .checklist-section {
+        page-break-before: always;
+      }
+
+      .closing {
+        page-break-before: always;
+      }
+
+      .cta-button {
+        display: none;
+      }
+    }
+
+    /* ─── Diseño responsive ─── */
+    @media (max-width: 768px) {
+      .cover h1 { font-size: 2rem; }
+      .cover .tagline { font-size: 1.1rem; }
+      .content { padding: 2rem 1.25rem; }
+      .lesson-title { font-size: 1.4rem; }
+      .lesson-number { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Portada -->
+  {{cover}}
+
+  <!-- Contenido principal -->
+  <div class="content">
+
+    <!-- Lecciones -->
+    {{lessons}}
+
+    <!-- Ejercicios -->
+    {{exercises}}
+
+    <!-- Checklist -->
+    {{checklist}}
+
+  </div>
+
+  <!-- Cierre -->
+  {{closing}}
+
+  <!-- Pie de página -->
+  <footer class="ebook-footer">
+    <p>Generado el {{generatedDate}} con eBook Generator System</p>
+    <p>{{ebook.author}}</p>
+  </footer>
+
+</body>
+</html>

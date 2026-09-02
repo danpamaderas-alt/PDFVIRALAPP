@@ -1,0 +1,19 @@
+{
+  "server": {
+    "port": 3000,
+    "host": "localhost"
+  },
+  "supabase": {
+    "table": "ebooks"
+  },
+  "generator": {
+    "outputDir": "./generated",
+    "defaultLanguage": "es",
+    "defaultAuthor": "APPDANPA",
+    "dateFormat": "es-ES"
+  },
+  "templates": {
+    "directory": "./templates",
+    "main": "ebook.html"
+  }
+}

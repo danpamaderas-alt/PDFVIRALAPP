@@ -1,0 +1,112 @@
+{
+  "id": "recetas-saludables",
+  "title": "Recetas Saludables en 15 Minutos",
+  "subtitle": "Come bien sin perder tiempo",
+  "author": "APPDANPA",
+  "metadata": {
+    "category": "Salud y Bienestar",
+    "tags": ["recetas", "salud", "cocina", "rápido"],
+    "version": "1.0",
+    "createdAt": "2025-02-10T10:00:00Z"
+  },
+  "cover": {
+    "title": "Recetas Saludables en 15 Minutos",
+    "tagline": "Come rico, come rápido, come sano",
+    "color": "#27ae60"
+  },
+  "lessons": [
+    {
+      "title": "La Cocina Rápida y Saludable",
+      "icon": "🥗",
+      "sections": [
+        {
+          "title": "Por qué 15 minutos es suficiente",
+          "content": "Comer saludable no significa pasar horas en la cocina. Con los ingredientes correctos y un poco de planificación, puedes preparar comidas nutritivas y deliciosas en solo 15 minutos.",
+          "highlight": true
+        },
+        {
+          "title": "Principios fundamentales",
+          "bullets": [
+            "Ten siempre ingredientes básicos en tu despensa",
+            "Invierte en buenas herramientas de cocina",
+            "Prepara los ingredientes la noche anterior",
+            "Usa técnicas de cocción rápida: salteado, microondas, plancha",
+            "La planificación semanal es tu mejor aliada"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Desayunos Express",
+      "icon": "🌅",
+      "sections": [
+        {
+          "title": "Tostada de aguacate y huevo (5 min)",
+          "content": "Tuesta una rebanada de pan integral. Machaca medio aguacate con un tenedor, agrégale jugo de limón y sal. Fríe un huevo al gusto. Monta todo junto y añade semillas de sésamo.",
+          "bullets": [
+            "Rico en grasas saludables",
+            "Alto en proteína para empezar el día",
+            "Fibra para saciarte por horas"
+          ]
+        },
+        {
+          "title": "Batido verde energético (3 min)",
+          "content": "Licúa 1 taza de espinacas, 1 banana, 1/2 taza de yogur griego, 1 cucharada de miel y hielo al gusto. Listo para llevar.",
+          "highlight": true
+        }
+      ]
+    },
+    {
+      "title": "Almuerzos Rápidos",
+      "icon": "🍽️",
+      "sections": [
+        {
+          "title": "Bowl de quinoa mediterráneo (12 min)",
+          "content": "Cocina quinoa pre-cocida en microondas (3 min). Mezcla con pepino picado, tomates cherry, aceitunas, queso feta y aderezo de limón con aceite de oliva.",
+          "bullets": [
+            "Completo en proteínas vegetales",
+            "Grasas omega del aceite de oliva",
+            "Vitaminas y minerales variados"
+          ]
+        },
+        {
+          "title": "Wrap de pollo a la plancha (10 min)",
+          "content": "Sazona una pechuga de pollo con hierbas y saltéala 5 minutos por lado. En un tortilla integral, coloca el pollo, lechuga, tomate y hummus. Enrolla y sirve.",
+          "highlight": true
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "question": "¿Cuáles son los 3 ingredientes que siempre deberías tener en tu despensa para cocinar rápido y sano?",
+      "options": [
+        "Aceite de oliva, ajo y limones",
+        "Pasta, arroz y pan",
+        "Helado, snacks y refrescos",
+        "Salsas embotelladas, quesos procesados y embutidos"
+      ],
+      "hint": "Piensa en ingredientes frescos, versátiles y con larga vida útil."
+    },
+    {
+      "question": "Diseña un plan de desayunos para 5 días usando solo recetas de 15 minutos o menos.",
+      "hint": "Varía entre tostadas, batidos, avena y huevos para no aburrirte."
+    },
+    {
+      "question": "Prepara la receta del bowl de quinoa mediterráneo y adapta los ingredientes a tu gusto.",
+      "hint": "Puedes cambiar el queso feta por tofu marinado si eres vegano."
+    }
+  ],
+  "checklist": [
+    { "task": "Revisar mi despensa y hacer lista de compras", "done": false },
+    { "task": "Preparar el batido verde energético", "done": false },
+    { "task": "Cocinar el bowl de quinoa mediterráneo", "done": false },
+    { "task": "Planificar desayunos de la semana", "done": false },
+    { "task": "Compartir mi receta favorita con alguien", "done": false }
+  ],
+  "closing": {
+    "message": "Comer bien y rápido es posible con un poco de planificación. Empieza con una receta hoy y notarás la diferencia en tu energía y bienestar.",
+    "cta": "¡Tu próximo paso: elige UNA receta y prepárala hoy!",
+    "links": []
+  }
+}

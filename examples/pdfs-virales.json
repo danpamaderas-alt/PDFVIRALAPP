@@ -1,0 +1,119 @@
+{
+  "id": "pdfs-virales",
+  "title": "PDFs Virales",
+  "subtitle": "Cómo crear documentos que se comparten masivamente",
+  "author": "APPDANPA",
+  "metadata": {
+    "category": "Marketing Digital",
+    "tags": ["pdf", "viral", "marketing", "contenido"],
+    "version": "1.0",
+    "createdAt": "2025-01-15T10:00:00Z"
+  },
+  "cover": {
+    "title": "PDFs Virales",
+    "tagline": "Transforma tu contenido en documentos imparables",
+    "color": "#1a1a2e"
+  },
+  "lessons": [
+    {
+      "title": "¿Qué es un PDF Viral?",
+      "icon": "🔥",
+      "sections": [
+        {
+          "title": "Definición y concepto",
+          "content": "Un PDF viral es un documento diseñado estratégicamente para que el lector sienta la necesidad de compartirlo. A diferencia de un PDF común, está optimizado para generar engagement y difusión orgánica.",
+          "highlight": true
+        },
+        {
+          "title": "Elementos clave",
+          "content": "Todo PDF viral contiene estos elementos fundamentales:",
+          "bullets": [
+            "Un título que genera curiosidad inmediata",
+            "Contenido de alto valor percibido en las primeras 2 páginas",
+            "Diseño visual profesional que genera confianza",
+            "Llamadas a la acción estratégicamente ubicadas",
+            "Información que el lector quiere compartir con su red"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Estructura de un PDF Viral",
+      "icon": "📐",
+      "sections": [
+        {
+          "title": "La fórmula de 5 páginas",
+          "content": "Un PDF viral efectivo sigue una estructura probada de 5 páginas que captura y mantiene la atención del lector.",
+          "bullets": [
+            "Página 1: Portada con promesa clara",
+            "Página 2: El problema que resuelves",
+            "Página 3: La solución (tu framework o método)",
+            "Página 4: Caso de éxito o prueba social",
+            "Página 5: Llamada a la acción y siguientes pasos"
+          ]
+        },
+        {
+          "title": "Diseño que impacta",
+          "content": "El diseño no es decoración: es comunicación. Usa colores consistentes, tipografías legibles y espacios en blanco generosos. Un PDF bien diseñado comunica profesionalismo en segundos."
+        }
+      ]
+    },
+    {
+      "title": "Estrategias de Distribución",
+      "icon": "🚀",
+      "sections": [
+        {
+          "title": "Canales de difusión",
+          "content": "Un PDF viral necesita los canales correctos para multiplicarse:",
+          "bullets": [
+            "Redes sociales con snippets del contenido",
+            "Email marketing como regalo exclusivo",
+            "Grupos de Telegram y WhatsApp",
+            "Plataformas de intercambio como SlideShare",
+            "Colaboraciones con influencers de tu nicho"
+          ]
+        },
+        {
+          "title": "El gancho inicial",
+          "content": "Las primeras 48 horas son críticas. Comparte el PDF con tu audiencia más cercana y pídeles explícitamente que lo compartan. El efecto bola de nieve comienza con un pequeño impulso.",
+          "highlight": true
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "question": "Define el tema de tu primer PDF viral. ¿Qué problema específico resuelve para tu audiencia?",
+      "hint": "Piensa en la pregunta más frecuente que te hacen tus clientes o seguidores."
+    },
+    {
+      "question": "Crea un borrador de la estructura de 5 páginas para tu PDF.",
+      "hint": "Usa la fórmula del Capítulo 2 como guía."
+    },
+    {
+      "question": "Diseña al menos 3 canales por los cuales distribuirás tu PDF en las primeras 48 horas.",
+      "options": [
+        "Publicación en redes sociales con extracto",
+        "Envío por email a tu lista",
+        "Compartir en 3 grupos relevantes",
+        "Publicar en plataformas de documentos",
+        "Colaboración con 1 persona influyente"
+      ]
+    }
+  ],
+  "checklist": [
+    { "task": "Definir el tema y audiencia del PDF", "done": false },
+    { "task": "Crear la estructura de 5 páginas", "done": false },
+    { "task": "Diseñar la portada profesional", "done": false },
+    { "task": "Redactar el contenido de alto valor", "done": false },
+    { "task": "Agregar llamadas a la acción", "done": false },
+    { "task": "Revisar diseño y coherencia visual", "done": false },
+    { "task": "Preparar 3 canales de distribución", "done": false },
+    { "task": "Programar lanzamiento en 48 horas", "done": false }
+  ],
+  "closing": {
+    "message": "¡Ahora tienes todo lo necesario para crear PDFs virales que se compartan solos! Recuerda: el valor del contenido y la claridad de la oferta son la clave del éxito.",
+    "cta": "¿Listo para crear tu primer PDF viral?",
+    "links": []
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Esquema de Ebook",
+  "description": "Estructura válida para un ebook en el sistema",
+  "type": "object",
+  "required": ["id", "title", "author", "cover", "lessons", "closing"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identificador único del ebook"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Título del ebook"
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Subtítulo del ebook"
+    },
+    "author": {
+      "type": "string",
+      "description": "Nombre del autor"
+    },
+    "cover": {
+      "type": "object",
+      "required": ["title", "tagline"],
+      "properties": {
+        "title": { "type": "string" },
+        "tagline": { "type": "string" },
+        "image": { "type": "string", "description": "URL de imagen de portada" },
+        "color": { "type": "string", "description": "Color de fondo en hex (#FF5733)" }
+      }
+    },
+    "lessons": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["title", "sections"],
+        "properties": {
+          "title": { "type": "string" },
+          "icon": { "type": "string", "description": "Emoji representativo" },
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["title", "content"],
+              "properties": {
+                "title": { "type": "string" },
+                "content": { "type": "string" },
+                "highlight": { "type": "boolean" },
+                "bullets": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "exercises": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question"],
+        "properties": {
+          "question": { "type": "string" },
+          "hint": { "type": "string" },
+          "options": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "checklist": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task": { "type": "string" },
+          "done": { "type": "boolean", "default": false }
+        }
+      }
+    },
+    "closing": {
+      "type": "object",
+      "required": ["message"],
+      "properties": {
+        "message": { "type": "string" },
+        "cta": { "type": "string" },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "category": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "version": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

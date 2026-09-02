@@ -1,0 +1,18 @@
+{
+  "name": "ebook-generator-system",
+  "version": "1.0.0",
+  "description": "Sistema de generación de ebooks en HTML con almacenamiento en Supabase",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": ["ebook", "generator", "html", "supabase"],
+  "author": "APPDANPA",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.0",
+    "@supabase/supabase-js": "^2.45.0",
+    "dotenv": "^16.4.5"
+  }
+}

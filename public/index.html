@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ebook Generator System</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>📚 Ebook Generator System</h1>
+    <p>Crea, gestiona y exporta ebooks en HTML</p>
+  </header>
+
+  <div class="container">
+
+    <!-- ─── Lista de ebooks ─── -->
+    <div id="list-section">
+      <div class="actions">
+        <h2>Mis Ebooks</h2>
+        <button class="btn btn-primary" onclick="openEditor()">
+          ➕ Nuevo Ebook
+        </button>
+      </div>
+
+      <div id="ebook-grid" class="ebook-grid">
+        <!-- Se llena dinámicamente -->
+      </div>
+    </div>
+
+    <!-- ─── Editor JSON ─── -->
+    <div id="editor-section" style="display: none;">
+      <div class="actions">
+        <h2 id="editor-title">Editor de Ebook</h2>
+        <div>
+          <button class="btn btn-secondary" onclick="closeEditor()">← Volver</button>
+          <button class="btn btn-success" onclick="saveFromEditor()">💾 Guardar</button>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <p style="margin-bottom: 1rem; color: #666;">
+          Edita el JSON del ebook directamente. Consulta la estructura en
+          <code>examples/</code> o en la documentación.
+        </p>
+        <textarea id="json-editor" class="json-editor" spellcheck="false"></textarea>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

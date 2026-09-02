@@ -1,0 +1,9 @@
+<!-- Plantilla parcial: Ejercicio -->
+<div class="exercise">
+  <h3>Ejercicio {{exercise.number}}</h3>
+  <p class="exercise-question">{{exercise.question}}</p>
+  {{exercise.options}}
+  {{#if exercise.hint}}
+  <p class="exercise-hint">💡 Pista: {{exercise.hint}}</p>
+  {{/if}}
+</div>
